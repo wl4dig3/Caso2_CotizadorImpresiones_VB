@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <OptionStrict>On</OptionStrict>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionInfer>On</OptionInfer>
+    <RootNamespace></RootNamespace>
+    <StartupObject>PRO205.Semana7.Caso2.CotizadorImpresiones.VB.Program</StartupObject>
+    <AssemblyName>Caso2_CotizadorImpresiones_VB</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="FrmCotizadorImpresiones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmCotizadorImpresiones.Designer.vb">
+      <DependentUpon>FrmCotizadorImpresiones.vb</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <EmbeddedResource Update="FrmCotizadorImpresiones.resx">
+      <DependentUpon>FrmCotizadorImpresiones.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
