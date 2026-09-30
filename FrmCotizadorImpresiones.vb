@@ -21,7 +21,7 @@ Namespace PRO205.Semana7.Caso2.CotizadorImpresiones.VB
             ' Carga las modalidades de impresión.
             cboTipoImpresion.Items.AddRange(New Object() {"Blanco y negro", "Color"})
             ' Carga los formatos de papel.
-            cboPapel.Items.AddRange(New Object() {"Carta", "Oficio"})
+            cboPapel.Items.AddRange(New Object() {"Carta", "Oficio", "A3"})
             ' Define una página como valor inicial.
             nudPaginas.Value = 1D
             ' Inicia el Timer.
@@ -90,8 +90,14 @@ Namespace PRO205.Semana7.Caso2.CotizadorImpresiones.VB
         Private Function CalcularTotal() As Decimal
             ' Selecciona la tarifa según el tipo de impresión.
             Dim precioPorPagina As Decimal = If(cboTipoImpresion.SelectedItem IsNot Nothing AndAlso cboTipoImpresion.SelectedItem.ToString() = "Color", 180D, 40D)
-            ' Define un recargo didáctico para Oficio.
-            Dim recargoPapel As Decimal = If(cboPapel.SelectedItem IsNot Nothing AndAlso cboPapel.SelectedItem.ToString() = "Oficio", 20D, 0D)
+            ' Define el recargo por página según el formato de papel.
+            Dim recargoPapel As Decimal = 0D
+            Select Case If(cboPapel.SelectedItem?.ToString(), String.Empty)
+                Case "Oficio"
+                    recargoPapel = 20D
+                Case "A3"
+                    recargoPapel = 50D
+            End Select
             ' Calcula el subtotal.
             Dim subtotal As Decimal = nudPaginas.Value * (precioPorPagina + recargoPapel)
             ' Aplica descuento pedagógico de 10% en doble faz.
